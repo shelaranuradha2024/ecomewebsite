@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ProductList from './ProductList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <h1>EcomWeb</h1>
+        <input type="text" placeholder="Search here..." className="search-bar" />
+        <div className="cart-icons">
+          <img src={`${process.env.PUBLIC_URL}/images/cart.png`} alt="Cart" />
+          <img src={`${process.env.PUBLIC_URL}/images/wishlist.png`} alt="Wishlist" />
+        </div>
       </header>
+
+      <ProductList />
     </div>
   );
 }
