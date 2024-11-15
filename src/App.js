@@ -1,21 +1,32 @@
-import React from 'react';
-import ProductList from './ProductList';
+import React, { useState, useEffect } from 'react';
+import Header from './components/Header';
+import ProductList from './components/ProductList';
 
-function App() {
-  return (
-    <div>
-      <header>
-        <h1>EcomWeb</h1>
-        <input type="text" placeholder="Search here..." className="search-bar" />
-        <div className="cart-icons">
-          <img src={`${process.env.PUBLIC_URL}/images/cart.png`} alt="Cart" />
-          <img src={`${process.env.PUBLIC_URL}/images/wishlist.png`} alt="Wishlist" />
+const App = () => {
+    const [products, setProducts] = useState([]);
+
+    // Fetch products from the backend
+    useEffect(() => {
+        fetch('http://localhost:8081/product/')
+            .then((response) => response.json())
+            .then((data) => setProducts(data))
+            .catch((error) => console.error('Error fetching products:', error));
+    }, []);
+
+    // Handle search functionality
+    const handleSearch = (searchTerm) => {
+        fetch(`http://localhost:8081/product/search?name=${searchTerm}`)
+            .then((response) => response.json())
+            .then((data) => setProducts(data))
+            .catch((error) => console.error('Error searching products:', error));
+    };
+
+    return (
+        <div>
+            <Header onSearch={handleSearch} />
+            <ProductList products={products} />
         </div>
-      </header>
-
-      <ProductList />
-    </div>
-  );
-}
+    );
+};
 
 export default App;

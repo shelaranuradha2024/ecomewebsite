@@ -1,0 +1,35 @@
+/* Product List Styles */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;  /* Set all product images to the same height */
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-details h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.product-details p {
+  font-size: 16px;
+  color: #333;
+}
